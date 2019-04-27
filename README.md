@@ -5,11 +5,10 @@ statistics about the country from the rest countries api.
 
 Currently you must type in an a city and matching country to get the weather and stats to display.
 The map as of now is useless and it's only there because I ran out of time when I was trying to implement it.
-I tried to get this on heroku but I ran into a couple errors I couldn't figure out in time.
 
 I would like to implement some of the map overlay functions offered by the node module I used for Google Maps.
 
-##Sources
+## Sources
 - https://stackoverflow.com/questions/34424845/adding-script-tag-to-react-jsx
 - https://reactjs.org/docs/getting-started.html
 - https://github.com/google-map-react/google-map-react
