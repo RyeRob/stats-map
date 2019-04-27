@@ -2,10 +2,14 @@
   "name": "react-stats-map",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+      "node": "10.15.1"
+  },
   "dependencies": {
     "express": "^4.16.4",
     "express-favicon": "^2.0.1",
     "google-map-react": "^1.1.4",
+    "heroku": "^7.24.1",
     "path": "^0.12.7",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
