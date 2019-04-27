@@ -1,9 +1,21 @@
 # About
 This project intended to be a map (using google maps api) that you click to drop a marker it gets the country 
 that it's in and the nearest city. The weather of the city would be displayed using open weather map, along with 
-statistics about the from the rest countries api.
+statistics about the country from the rest countries api.
+
+Currently you must type in an a city and matching country to get the weather and stats to display.
+The map as of now is useless and it's only there because I ran out of time when I was trying to implement it.
+I tried to get this on heroku but I ran into a couple errors I couldn't figure out in time.
 
 I would like to implement some of the map overlay functions offered by the node module I used for Google Maps.
+
+##Sources
+- https://stackoverflow.com/questions/34424845/adding-script-tag-to-react-jsx
+- https://reactjs.org/docs/getting-started.html
+- https://github.com/google-map-react/google-map-react
+- https://www.youtube.com/watch?v=204C9yNeOYI&t
+- https://www.youtube.com/watch?v=Ke90Tje7VS0&t
+- https://www.youtube.com/watch?v=sBws8MSXN7A&t
 
 ## Currently Working
 - Getting data from weather and statics APIs
@@ -11,6 +23,8 @@ I would like to implement some of the map overlay functions offered by the node 
 - Map api loads map
 
 ## Needs Work
+- validation and error mesasge on text input
+- get lat and long on map click
 - Passing latitude and longitude from map to stats and weather
 - Display information upon clicking on map
 - Have overlays of maps from restcountries API on the Google Map
