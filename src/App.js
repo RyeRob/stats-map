@@ -62,17 +62,17 @@ class App extends React.Component {
                 error: "Enter Country and City",
                 population: undefined,
                 latitude: undefined,
-                longitude: undefined,
+                longitude: undefined
             });
         }
     }
 
     // trying to get lat and long on map click
-    handleClickedMap = (e) => {
-        let latitude = e.latLng.lat()
-        let longtitude  = e.latLng.lat()
-        console.log(latitude, longtitude)
-    }
+    // handleClickedMap = (e) => {
+    //     let latitude = e.latLng.lat()
+    //     let longtitude  = e.latLng.lat()
+    //     console.log(latitude, longtitude)
+    // }
 
     // componentWillMount(){
     //     this.renderMap()

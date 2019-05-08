@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-      "node": "10.15.1", 
-      "npm": "6.7.0"
+    "node": "10.15.1",
+    "npm": "6.7.0"
   },
   "dependencies": {
     "express": "^4.16.4",
@@ -17,7 +17,7 @@
     "react-scripts": "3.0.0"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -36,5 +36,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "This project intended to be a map (using google maps api) that you click to drop a marker it gets the country \r that it's in and the nearest city. The weather of the city would be displayed using open weather map, along with \r statistics about the country from the rest countries api.",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RyeRob/stats-map.git"
+  },
+  "author": "Ryan Robinson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RyeRob/stats-map/issues"
+  },
+  "homepage": "https://github.com/RyeRob/stats-map#readme"
 }
