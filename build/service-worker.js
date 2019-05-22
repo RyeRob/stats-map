@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.0/workbox-sw.js");
 
 importScripts(
-  "/RyeRob/stats-map/precache-manifest.55aec78cf42b3856a9fd26330f658f53.js"
+  "/RyeRob/stats-map/precache-manifest.c904cedde66b805c26577bcf8e5cc330.js"
 );
 
 self.addEventListener('message', (event) => {
