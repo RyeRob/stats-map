@@ -1,0 +1,4 @@
+[build]
+base = "stats-map/"
+publish = "stats-map/build/"
+command = "yarn build"
