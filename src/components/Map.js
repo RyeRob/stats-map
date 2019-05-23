@@ -39,21 +39,18 @@ export class MapContainer extends Component {
             ],
           };
         });
-
         const map_call = await fetch (`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${api_key}`);
         const mapData = await map_call.json();
-
+        // set variables to city and country to send to other APIs
         const city = mapData.results[0].address_components[3].long_name;
         const country = mapData.results[0].address_components[6].long_name;
 
         const weather_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${weather_api_key}`);
         const data = await weather_call.json();
-        // making call to statistics API
         const stats_call = await fetch (`https://restcountries.eu/rest/v2/name/${country}`);
         const statData = await stats_call.json();
 
-        console.log(data);
-        console.log(statData);
+        console.log(mapData);
 
         if (city && country) {
             // setting state to retrieved information from APIs

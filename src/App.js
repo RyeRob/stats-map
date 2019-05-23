@@ -60,8 +60,6 @@ class App extends React.Component {
             });
 
         } else {
-            // trying to set error message if feilds empty
-            // still throws error, I think I need try/catch here
             this.setState({
                 temperature: undefined,
                 city: undefined,
@@ -95,9 +93,7 @@ class App extends React.Component {
                     lati = {this.state.latitude}
                 />
                 <MapContainer
-                    long = {this.state.longitude}
-                    lati = {this.state.latitude}
-                    getStats = {this.getStats}
+
                 />
             </div>
         );
