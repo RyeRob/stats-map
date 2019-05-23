@@ -29,6 +29,7 @@ class App extends React.Component {
         ]
         };
     }
+    
     getStats = async (e) => {
         // prevent page refrsh
         e.preventDefault();
@@ -41,7 +42,6 @@ class App extends React.Component {
         // making call to statistics API
         const stats_call = await fetch (`https://restcountries.eu/rest/v2/name/${country}`);
         const statData = await stats_call.json();
-        console.log(statData);
 
         if (city && country) {
             // setting state to retrieved information from APIs
@@ -58,6 +58,7 @@ class App extends React.Component {
                 longitude: statData[0].latlng[1],
                 size: statData[0].area,
             });
+
         } else {
             // trying to set error message if feilds empty
             // still throws error, I think I need try/catch here

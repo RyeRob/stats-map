@@ -1,9 +1,9 @@
 import React from 'react';
 
 const Titles = () => (
-    <div>
+    <div id="titles">
         <h1 className="center-align">Stats Map</h1>
-        <p>Click on the map to see local weather and country statistics</p>
+        <p className="center-align">Enter a city and correspoding country to get local weather and stats.</p>
     </div>
 );
 

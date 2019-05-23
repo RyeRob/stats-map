@@ -19,3 +19,11 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+#titles {
+    padding-top:5rem;
+}
+
+.map-area {
+    padding-top: 5rem;
+}
