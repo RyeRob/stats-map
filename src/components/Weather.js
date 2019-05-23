@@ -1,6 +1,7 @@
 import React from 'react';
 // stateless functional component to return weather info
 const Weather = props => (
+    
     // explicit return from arrow function
     // if city and country props are set return the contens of div
     <div className="row">
@@ -19,5 +20,6 @@ const Weather = props => (
     }
     </div>
 );
+
 
 export default Weather
