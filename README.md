@@ -1,17 +1,12 @@
 # About
-This project intended to be a map (using google maps api) that you click to drop a marker it gets the country 
-that it's in and the nearest city. The weather of the city would be displayed using open weather map, along with 
-statistics about the country from the rest countries api.
-
-Currently you must type in an a city and matching country to get the weather and stats to display.
-The map as of now is useless and it's only there because I ran out of time when I was trying to implement it.
+This project allows users to select a city and country by searching or by clicking on the map. Weather from the nearest city and statistics about that country in an info card.
 
 I would like to implement some of the map overlay functions offered by the node module I used for Google Maps.
 
 ## Sources
 - https://stackoverflow.com/questions/34424845/adding-script-tag-to-react-jsx
 - https://reactjs.org/docs/getting-started.html
-- https://github.com/google-map-react/google-map-react
+- https://github.com/fullstackreact/google-maps-react#readme
 - https://www.youtube.com/watch?v=204C9yNeOYI&t
 - https://www.youtube.com/watch?v=Ke90Tje7VS0&t
 - https://www.youtube.com/watch?v=sBws8MSXN7A&t
@@ -19,16 +14,17 @@ I would like to implement some of the map overlay functions offered by the node 
 ## Currently Working
 - Getting data from weather and statics APIs
 - Search with text input by city and country name
-- Map api loads map
+- Dropping pin to get co-ordinates and reverse geocod
 
 ## Needs Work
-- validation and error mesasge on text input
-- get lat and long on map click
-- Passing latitude and longitude from map to stats and weather
-- Display information upon clicking on map
-- Have overlays of maps from restcountries API on the Google Map
+- Some places on map have a differetly formatted object than others causing no info to display
+- Closing info cards
+- Having multiple info cards open side by side to compare countries
+- Place pin on map when a location is text search
+- Look into more API options for statistics
 
 
+#  Made with Create-React-App
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
