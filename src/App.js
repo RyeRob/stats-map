@@ -1,6 +1,6 @@
 import React from 'react';
 import Titles from './components/Titles';
-import Form from './components/Form';
+// import Form from './components/Form';
 import Display from './components/Display';
 import MapContainer from './components/Map';
 
