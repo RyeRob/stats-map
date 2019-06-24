@@ -1,4 +1,3 @@
-//Sources of this logic
 //https://www.npmjs.com/package/google-maps-react
 //https://stackoverflow.com/questions/51421714/how-to-add-marker-onclick-and-show-my-geolocation-in-google-maps-react
 import React, { Component}  from 'react';
