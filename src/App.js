@@ -8,7 +8,7 @@ import MapContainer from './components/Map';
 // https://www.flaticon.com/free-icon/map_235861
 // https://realfavicongenerator.net
 
-const weather_api_key = '4ec32c804f751a15bd7054eccd7caa03';
+const weather_api_key = process.env.REACT_APP_WEATHER;
 
 class App extends React.Component {
   constructor(props) {

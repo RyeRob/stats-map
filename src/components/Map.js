@@ -5,8 +5,8 @@ import React, { Component}  from 'react';
 import {Map, Marker, GoogleApiWrapper} from 'google-maps-react';
 import Display from './Display';
 
-const api_key = "AIzaSyAwTJyMxZyWRMCzfqq9l98vJEI_r4Ke4f8";
-const weather_api_key = '4ec32c804f751a15bd7054eccd7caa03';
+const api_key = process.env.REACT_APP_MAP;
+const weather_api_key = process.env.REACT_APP_WEATHER;
 
 export class MapContainer extends Component {
   // setting start for marker
