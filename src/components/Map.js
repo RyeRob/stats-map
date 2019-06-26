@@ -43,15 +43,44 @@ export class MapContainer extends Component {
     const map_call = await fetch (`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${api_key}`);
     const mapData = await map_call.json();
     // set variables to city and country to send to other APIs
-    const city = mapData.results[0].address_components[3].long_name;
-    const country = mapData.results[0].address_components[6].long_name;
+
+    const addressComponents = mapData.results[0].address_components;
+    let country = '';
+    let city = '';
+
+    for (let i = 0; i < addressComponents.length; i++) {
+      if (addressComponents[i].types[0] === 'country'){
+        country = addressComponents[i].long_name;
+      }
+    }
+    for (let i = 0; i < addressComponents.length; i++) {
+      if (addressComponents[i].types[0] === 'locality'){
+        city = addressComponents[i].long_name;
+      } else if (addressComponents[i].types[0] === 'administrative_area_level_1') {
+        city = addressComponents[i].long_name;
+      }
+    }
+
+    console.log(city);
+    console.log(addressComponents);
+   
+
+    // var result = Object.keys(addressComponents).map(function(key) {
+    //   return [Number(key), addressComponents[key]];
+    // });
+    // let isArr = Object.prototype.toString.call(addressComponents) === '[object Array]';
+    // console.log(isArr);
+    // console.log(addressComponents);
+
+    //const city = mapData.results[0].address_components[3].long_name;
+    //const country = mapData.results[0].address_components[6].long_name;
 
     const weather_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${weather_api_key}`);
     const data = await weather_call.json();
     const stats_call = await fetch (`https://restcountries.eu/rest/v2/name/${country}`);
     const statData = await stats_call.json();
 
-    console.log(mapData.results[0]);
+    //console.log(mapData.results[0]);
 
     if (city && country) {
       // setting state to retrieved information from APIs
