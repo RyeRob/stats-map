@@ -3,6 +3,7 @@
 import React, { Component}  from 'react';
 import {Map, Marker, GoogleApiWrapper} from 'google-maps-react';
 import Display from './Display';
+import { endianness } from 'os';
 
 const api_key = process.env.REACT_APP_MAP;
 const weather_api_key = process.env.REACT_APP_WEATHER;
@@ -52,35 +53,26 @@ export class MapContainer extends Component {
       if (addressComponents[i].types[0] === 'country'){
         country = addressComponents[i].long_name;
       }
-    }
-    for (let i = 0; i < addressComponents.length; i++) {
-      if (addressComponents[i].types[0] === 'locality'){
-        city = addressComponents[i].long_name;
-      } else if (addressComponents[i].types[0] === 'administrative_area_level_1') {
-        city = addressComponents[i].long_name;
+      if (country === 'United States') {
+        country = 'United States of America'
       }
     }
 
+    for (let i = 0; i < addressComponents.length; i++) {
+      if (addressComponents[i].types[0] === 'locality'){
+        city = addressComponents[i].long_name;
+        }
+        // else if (addressComponents[i].types[0] === 'administrative_area_level_1') {
+      //    city = addressComponents[i].long_name;
+      // }
+    }
+
     console.log(city);
-    console.log(addressComponents);
-   
-
-    // var result = Object.keys(addressComponents).map(function(key) {
-    //   return [Number(key), addressComponents[key]];
-    // });
-    // let isArr = Object.prototype.toString.call(addressComponents) === '[object Array]';
-    // console.log(isArr);
-    // console.log(addressComponents);
-
-    //const city = mapData.results[0].address_components[3].long_name;
-    //const country = mapData.results[0].address_components[6].long_name;
 
     const weather_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${weather_api_key}`);
     const data = await weather_call.json();
     const stats_call = await fetch (`https://restcountries.eu/rest/v2/name/${country}`);
     const statData = await stats_call.json();
-
-    //console.log(mapData.results[0]);
 
     if (city && country) {
       // setting state to retrieved information from APIs
@@ -88,7 +80,7 @@ export class MapContainer extends Component {
         // converting temp to celcius from kelvin and only 2 decimals
         temperature: (data.main.temp - 273.15).toFixed(2),
         city: data.name,
-        country: statData[0].name,
+        country: country,
         humidity: data.main.humidity,
         description: data.weather[0].description,
         error: '',
@@ -106,7 +98,8 @@ export class MapContainer extends Component {
       width:'70%',
       height:'70%',
       margin:'0 auto',
-      display: 'block'
+      display: 'block',
+      boxShadow: '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)'
     }
 
     return (
