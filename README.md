@@ -1,13 +1,17 @@
 # About
 This project allows users to select a city and country by clicking on the map. Weather from the nearest city and statistics about that country will appear.
 
-## Currently Working
-- Getting data from weather and statics APIs
-- Dropping pin to get co-ordinates and reverse geocode
+## Done
+- Get weather for city where pin is dropped
+- Get statistics for country where pin is dropped
+
+Note: Not all locations currently working as the stats APIs that's used to search data doesn't recognize some region names. Most parts of North American, Europe and Austrailia work.
 
 ## Needs Work
-- Some places on map have a differetly formatted object than others causing no info to display
-- Closing info cards
-- Having multiple info cards open side by side to compare countries
-- Place pin on map when a location is text search
-- Look into more API options for statistics
+- Set up error handling on API call
+- Adding more stats for countries
+
+## Planned
+- Having multiple info cards open side by side and ability to close them
+- Text search that places pin and displays stats
+- Start marker and info at current location using IP address
