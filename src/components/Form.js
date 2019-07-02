@@ -1,5 +1,5 @@
 import React from 'react';
-
+// not currently used
 const Form = props => (
   <form className="searchForm" onSubmit={props.getStats}>
     <label htmlFor="city">City</label>

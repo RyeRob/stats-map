@@ -3,13 +3,11 @@
 import React, { Component}  from 'react';
 import {Map, Marker, GoogleApiWrapper} from 'google-maps-react';
 import Display from './Display';
-import { endianness } from 'os';
 
 const api_key = process.env.REACT_APP_MAP;
 const weather_api_key = process.env.REACT_APP_WEATHER;
 
 export class MapContainer extends Component {
-  // setting start for marker
   constructor(props) {
     super(props);
     this.state = {
@@ -24,7 +22,6 @@ export class MapContainer extends Component {
     this.onClick = this.onClick.bind(this);
   }
 
-  // on click function to get coordinates and set marker state
   onClick = async (t, map, coord) => {
     const { latLng } = coord;
     const lat = latLng.lat();
@@ -40,14 +37,12 @@ export class MapContainer extends Component {
         ],
       };
     });
-
+    let city = '';
+    let country = '';
     const map_call = await fetch (`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${api_key}`);
     const mapData = await map_call.json();
-    // set variables to city and country to send to other APIs
-
     const addressComponents = mapData.results[0].address_components;
-    let country = '';
-    let city = '';
+
 
     for (let i = 0; i < addressComponents.length; i++) {
       if (addressComponents[i].types[0] === 'country'){
@@ -59,15 +54,25 @@ export class MapContainer extends Component {
     }
 
     for (let i = 0; i < addressComponents.length; i++) {
-      if (addressComponents[i].types[0] === 'locality'){
-        city = addressComponents[i].long_name;
-        }
-        // else if (addressComponents[i].types[0] === 'administrative_area_level_1') {
-      //    city = addressComponents[i].long_name;
-      // }
-    }
+      let address = addressComponents[i].types[0];
 
-    console.log(city);
+      if (address.indexOf('locality') > -1) {
+        city = addressComponents[i].long_name;
+        break;
+      }
+      else if (address.indexOf('administrative_area_level_3') > -1) {
+        city = addressComponents[i].long_name;
+        break;
+      }
+      else if (address.indexOf('administrative_area_level_2') > -1) {
+        city = addressComponents[i].long_name;
+        break;
+      }
+      else if (address.indexOf('administrative_area_level_1') > -1) {
+        city = addressComponents[i].long_name;
+        break;
+      }
+    }
 
     const weather_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${weather_api_key}`);
     const data = await weather_call.json();
@@ -75,9 +80,7 @@ export class MapContainer extends Component {
     const statData = await stats_call.json();
 
     if (city && country) {
-      // setting state to retrieved information from APIs
       this.setState({
-        // converting temp to celcius from kelvin and only 2 decimals
         temperature: (data.main.temp - 273.15).toFixed(2),
         city: data.name,
         country: country,
@@ -99,7 +102,7 @@ export class MapContainer extends Component {
       height:'70%',
       margin:'0 auto',
       display: 'block',
-      boxShadow: '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)'
+      borderRadius: '15px',
     }
 
     return (
@@ -114,6 +117,7 @@ export class MapContainer extends Component {
         size = {this.state.size}
         long = {this.state.longitude}
         lati = {this.state.latitude}
+        onClick={this.closeCard}
       />
       <Map
         google={this.props.google}
@@ -121,7 +125,7 @@ export class MapContainer extends Component {
         zoom={2}
         className={'map'}
         initialCenter={{
-          lat:20,
+          lat:40,
           lng:20
         }}
         onClick={this.onClick}
